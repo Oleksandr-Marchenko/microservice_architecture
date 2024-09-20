@@ -5,6 +5,12 @@ spring:
     config:
       server:
         git:
-          uri: file:///C:/projects/microservice_architecture/config-server-repository
+          uri: https://github.com/Oleksandr-Marchenko/spring-cloud-config-server-repository
           clone-on-start: true
+          username: Oleksandr-Marchenko
+          password: *******
     fail-fast: true
+  security:
+    user:
+      name: spring_cloud_user
+      password: springCloud_Pwd!
