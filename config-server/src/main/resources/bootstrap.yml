@@ -9,7 +9,7 @@ spring:
           clone-on-start: true
           username: Oleksandr-Marchenko
           password: *******
-    fail-fast: true
+      fail-fast: true
   security:
     user:
       name: spring_cloud_user
