@@ -8,9 +8,9 @@ spring:
           uri: https://github.com/Oleksandr-Marchenko/spring-cloud-config-server-repository
           clone-on-start: true
           username: Oleksandr-Marchenko
-          password: *******
-    fail-fast: true
+          password: '{cipher}5747c4382eefd3c3cccd2de0acf6d9e707a33393597b5c8bb22af85beb0e631968eb7da173d55e2126236a813fa046092f6a52ecf865c10b8a9c2c7c58f9cd1e'
+      fail-fast: true
   security:
     user:
       name: spring_cloud_user
-      password: springCloud_Pwd!
+      password: '{cipher}8205b9b90d29ee58ac439d10f1d71538358c783ebf137ca8667aa0b27119e6c63700e82eff132e83e9f2e68604d8cf7c'
