@@ -13,9 +13,9 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(c -> c.ignoringRequestMatchers("/encrypt/**", "/decrypt/**"))
+                .csrf(c -> c.ignoringRequestMatchers("/actuator/**", "/encrypt/**", "/decrypt/**"))
                 .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/encrypt/**", "/decrypt/**").permitAll()
+                        .requestMatchers("/actuator/**", "/encrypt/**", "/decrypt/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(withDefaults());
