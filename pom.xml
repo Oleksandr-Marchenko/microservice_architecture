@@ -43,7 +43,7 @@
 		<spring-cloud.version>4.1.3</spring-cloud.version>
 		<spring-cloud-dependencies.version>2023.0.3</spring-cloud-dependencies.version>
 		<elastic.version>7.17.24</elastic.version>
-		<elastic.data.version>5.1.2</elastic.data.version>
+		<elastic.data.version>5.3.4</elastic.data.version>
 	</properties>
 
 	<repositories>
@@ -246,7 +246,13 @@
 			<dependency>
 				<groupId>org.springframework.data</groupId>
 				<artifactId>spring-data-elasticsearch</artifactId>
-				<version>${elastic.data.version}</version>
+<!--				<version>${elastic.data.version}</version>-->
+			</dependency>
+
+			<dependency>
+				<groupId>co.elastic.clients</groupId>
+				<artifactId>elasticsearch-java</artifactId>
+				<version>8.15.2</version>
 			</dependency>
 
 		</dependencies>

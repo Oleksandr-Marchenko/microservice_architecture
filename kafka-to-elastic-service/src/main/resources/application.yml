@@ -1,0 +1,9 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+#  data:
+#    elasticsearch:
+#      rest:
+#        uris: http://localhost:9200
+#        connect-timeout-ms: 5000
+#        socket-timeout-ms: 30000
