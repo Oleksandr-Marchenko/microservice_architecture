@@ -1,14 +1,12 @@
-package com.microservices.demo.elastic.query.service.config;
+package com.microservices.demo.elastic.query.web.client.config;
 
 import com.microservices.demo.config.UserConfigData;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.AbstractAuthenticationFilterConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -27,26 +25,21 @@ public class WebSecurityConfig {
         this.userConfigData = userData;
     }
 
-    @Value("${security.paths-to-ignore}")
-    private String[] pathsToIgnore;
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .httpBasic(Customizer.withDefaults())
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(pathsToIgnore).permitAll()
-                        .requestMatchers("/**").hasAuthority("USER"))
-                .csrf(AbstractHttpConfigurer::disable);
+                        .requestMatchers("/").permitAll()
+                        .requestMatchers("/**").hasRole("USER")
+                        .anyRequest()
+                        .fullyAuthenticated())
+                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
+                .logout(logout -> logout.logoutSuccessUrl("/")
+                        .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID"));
 
         return http.build();
-    }
-
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return web -> web.ignoring()
-                .requestMatchers( "/swagger-ui/**", "/swagger-ui.html", "/swagger-resources/**",
-                        "/swagger-resources", "/api-docs/**", "/documents/**");
     }
 
     @Bean
@@ -64,6 +57,4 @@ public class WebSecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-
 }

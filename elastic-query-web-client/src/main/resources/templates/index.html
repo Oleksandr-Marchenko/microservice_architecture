@@ -1,4 +1,4 @@
-<div th:replace="header"></div>
+<div th:replace="~{header}"></div>
 
 <div class="container float-left">
     <div th:unless="${#authorization.expression('isAuthenticated()')}">
@@ -10,6 +10,4 @@
     </div>
 </div>
 
-<div th:replace="footer"></div>
-
-
+<div th:replace="~{footer}"></div>
