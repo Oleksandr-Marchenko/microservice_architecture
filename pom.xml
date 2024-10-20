@@ -275,6 +275,12 @@
 				<version>${thymeleaf.extras.version}</version>
 			</dependency>
 
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-loadbalancer</artifactId>
+				<version>${spring-cloud.version}</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
