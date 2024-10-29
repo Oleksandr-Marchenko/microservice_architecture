@@ -33,6 +33,7 @@
 		<module>reactive-elastic-query-service</module>
 		<module>reactive-elastic-query-web-client</module>
         <module>elastic-query-web-client-2</module>
+        <module>kafka-streams-service</module>
     </modules>
 	<packaging>pom</packaging>
 
@@ -51,9 +52,12 @@
 		<spring-cloud.version>4.1.3</spring-cloud.version>
 		<spring-cloud-dependencies.version>2023.0.3</spring-cloud-dependencies.version>
 		<elastic.version>7.17.24</elastic.version>
-		<springdoc-openapi-ui.version>2.6.0</springdoc-openapi-ui.version>
+		<springdoc-openapi-ui.version>1.8.0</springdoc-openapi-ui.version>
 		<thymeleaf.extras.version>3.1.2.RELEASE</thymeleaf.extras.version>
 		<postgresql.version>42.7.4</postgresql.version>
+		<kafka-streams.version>3.8.0</kafka-streams.version>
+		<kafka-clients.version>3.8.0</kafka-clients.version>
+		<kafka-streams-avro-serde.version>7.7.1</kafka-streams-avro-serde.version>
 	</properties>
 
 	<repositories>
@@ -202,7 +206,7 @@
 
 			<dependency>
 				<groupId>org.springdoc</groupId>
-				<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+				<artifactId>springdoc-openapi-ui</artifactId>
 				<version>${springdoc-openapi-ui.version}</version>
 			</dependency>
 
@@ -308,6 +312,23 @@
 				<version>${postgresql.version}</version>
 			</dependency>
 
+			<dependency>
+				<groupId>io.confluent</groupId>
+				<artifactId>kafka-streams-avro-serde</artifactId>
+				<version>${kafka-streams-avro-serde.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.kafka</groupId>
+				<artifactId>kafka-streams</artifactId>
+				<version>${kafka-streams.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.kafka</groupId>
+				<artifactId>kafka-clients</artifactId>
+				<version>${kafka-clients.version}</version>
+			</dependency>
 
 		</dependencies>
 	</dependencyManagement>
